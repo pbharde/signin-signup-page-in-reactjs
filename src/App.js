@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SignUpForm from './pages/SignUpForm';
+import {Route, NavLink, Router} from 'react-router-dom';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+    redirectToSignUp(event){
+      this.setState({ redirectToSignUp: true })
+    }
+
   render() {
+
+    const{redirectToSignUp}=this.state
+if(redirectToSignUp){
+  return (
+    <SignUpForm/>
+  )
+}
+
+
     return (
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <p>
-      //       Edit <code>src/App.js</code> and save to reload.
-      //     </p>
-      //     <a
-      //       className="App-link"
-      //       href="https://reactjs.org"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //     >
-      //       Learn React
-      //     </a>
-      //   </header>
-      // </div>
-
-
 <div className="App">
 	<div className="limiter">
 		<div className="container-login100" style={{backgroundImage: 'url('+'styles/images/bg-01.jpg'+')'}}>
@@ -77,22 +78,16 @@ class App extends Component {
 							Not a member?
 						</span>
 
-						<a href="#" className="txt2 bo1">
-							Sign up now
+						<a onClick={(e)=>this.redirectToSignUp(e)} className="txt2 bo1">
+							 Sign up now
 						</a>
-					</div>
+            	</div>
+
 				</form>
 			</div>
 		</div>
 	</div>
   </div>
-
-
-
-
-
-
-
     );
   }
 }
